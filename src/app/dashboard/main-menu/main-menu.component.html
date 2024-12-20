@@ -1,0 +1,50 @@
+<div class="container">
+  <form [formGroup]="TynyUrlForm">
+    <!-- Grupo Encode -->
+    <div formGroupName="encode" class="form-section">
+      <h2>Create Short URL</h2>
+      <div class="input-group">
+        <mat-form-field class="full-width">
+          <mat-label>URL for Encode</mat-label>
+          <input matInput formControlName="urlForEncode">
+        </mat-form-field>
+        <button mat-raised-button color="primary" (click)="encode()">Encode</button>
+      </div>
+      
+      <!-- Resultados de Encode -->
+      <div *ngIf="shortenedUrl" class="result-section">
+        <mat-form-field class="full-width">
+          <mat-label>Shortened URL</mat-label>
+          <input matInput [value]="shortenedUrl" readonly>
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <mat-label>Alias</mat-label>
+          <input matInput [value]="currentAlias" readonly>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <!-- Grupo Decode -->
+    <div formGroupName="decode" class="form-section">
+      <h2>Decode URL</h2>
+      <div class="input-group">
+        <mat-form-field class="full-width">
+          <mat-label>Shortened URL</mat-label>
+          <input matInput formControlName="urlForDecode">
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <mat-label>Alias</mat-label>
+          <input matInput formControlName="alias">
+        </mat-form-field>
+        <button mat-raised-button color="accent" (click)="decode()">Decode</button>
+      </div>
+        <!-- Resultados de decode -->
+        <div *ngIf="originalUrl" class="result-section">
+        <mat-form-field class="full-width">
+          <mat-label>Original URL</mat-label>
+          <input matInput [value]="originalUrl" readonly>
+        </mat-form-field>
+      </div>
+    </div>
+  </form>
+</div>
